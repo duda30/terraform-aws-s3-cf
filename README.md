@@ -1,6 +1,6 @@
 
 
-   Esse módulo oferece a criação de um bucket S3 como site estático e o serviço ClodFront:
+   Esse módulo oferece a criação de um bucket S3 como site estático e o serviço CloudFront:
 
    ---------------------------------------------------------------------------------------
 
