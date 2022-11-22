@@ -8,14 +8,6 @@ variable "acl" {
   default     = "public-read"
 }
 
-variable "suffix-index-html" {
-  default = null
-}
-
-variable "error-html" {
-  default = null
-}
-
 variable "website_domain_name" {
   description = "Domínio -> example.com.br - do seu site"
   default     = null
