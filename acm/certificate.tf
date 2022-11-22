@@ -1,6 +1,6 @@
 resource "aws_acm_certificate" "cert" {
   domain_name               = var.website_domain_name
-  subject_alternative_names = ["*.${var.zona-route53-name}", local.www_website_bucket_name, ]
+  subject_alternative_names = ["*.${var.zona-route53-name}", local.www_website_bucket_name]
   validation_method         = "DNS"
 
   tags = var.tags
