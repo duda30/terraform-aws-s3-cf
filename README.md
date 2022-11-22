@@ -18,7 +18,7 @@
 
    locations   | locais para aplicar a restri-type                     | default = ["BR"]
 
-   acm_certificate_arn_to_use | ARN do certificado na região us-east-1 | default = null
+   acm_certificate_arn_to_use | ARN do certificado na região us-east-1, indicar obrigatoriamente -> acm_certificate_arn_to_use = module.acm.certificate-arn | default = null
 
    allowed_methods     | Métodos a serem permitidos no CloudFront      | default = null
 
