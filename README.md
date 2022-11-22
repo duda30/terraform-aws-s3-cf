@@ -1,6 +1,6 @@
 
 
-   Esse módulo oferece a criação de um bucket S3 como site estático e o serviço CloudFront:
+   Esse módulo oferece a criação de um bucket S3 como site estático, uma distribuição no CloudFront, dois registros numa zona já existente no ROUTE53 e um certificado ACM com validação DNS:
 
    ---------------------------------------------------------------------------------------
 
