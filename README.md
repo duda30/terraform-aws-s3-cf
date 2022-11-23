@@ -6,6 +6,24 @@
 
 Exemplo de uso:
 
+      terraform {
+      required_providers {
+         aws = {
+            source  = "hashicorp/aws"
+            version = "4.38.0"
+         }
+      }
+      backend "s3" {
+         bucket = "YOUR-bucket-name"
+         key    = "YOUR-path/terraform.tfstate"
+         region = "YOUR-bucket-region"
+      }
+      }
+
+      provider "aws" {
+      region = var.provider_region
+      }
+
       module "s3-cdn" {
          source = "./s3-cdn"
 
@@ -32,6 +50,8 @@ Exemplo de uso:
          cdn-hosted-zone-id  = module.s3-cdn.hosted_zone_id
       }
 
+   ---------------------------------------------------------------------------------------
+
 ROOT:
 
    Variável: -> provider_region  | default = "us-east-1"
@@ -39,6 +59,7 @@ ROOT:
    Output:   -> website-domain-name-www | URL
              -> website-domain-name     | URL
 
+   ---------------------------------------------------------------------------------------
 
 Módulo ACM:
 
@@ -63,8 +84,7 @@ Módulo ACM:
 
       record               | Registro com "www" do Route53 
 
-
-
+   ---------------------------------------------------------------------------------------
 
 Módulo S3-CDN:
 
