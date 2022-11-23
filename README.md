@@ -82,11 +82,11 @@ module "acm" {
 
 | Name | Description | Default | Required |
 |------|-------------|:-----:|:-----:|
-|website_domain_name|Nome de domínio sem o "www" -> example.com.br|null| ✅ |
-|tags|tags para os recursos|null| ✅ |
-|zona-route53-name|Nome da sua zona hospedada no Route53 AWS| null| ✅ |
-|cdn-domain-name|O nome de domínio correspondente à distribuição, indicar obrigatoriamente -> cdn-domain-name = module.s3-cdn.domain_name_cdn|null| ✅ |
-|cdn-hosted-zone-id|Alias para o registro no R53, indicar obrigatoriamente -> cdn-hosted-zone-id  = module.s3-cdn.hosted_zone_id|null| ✅ |
+|website_domain_name|Nome de domínio sem o "www" -> example.com.br|`null`| ✅ |
+|tags|tags para os recursos|`null`| ✅ |
+|zona-route53-name|Nome da sua zona hospedada no Route53 AWS| `null`| ✅ |
+|cdn-domain-name|O nome de domínio correspondente à distribuição, indicar obrigatoriamente -> cdn-domain-name = module.s3-cdn.domain_name_cdn|`null`| ✅ |
+|cdn-hosted-zone-id|Alias para o registro no R53, indicar obrigatoriamente -> cdn-hosted-zone-id  = module.s3-cdn.hosted_zone_id|`null`| ✅ |
 
 
 ## Outputs 
@@ -105,15 +105,15 @@ module "acm" {
 
 | Name | Description | Default | Required |
 |------|-------------|:-----:|:-----:|
-|bucket-name|É o nome do seu bucket |null| ✅ |
+|bucket-name|É o nome do seu bucket |`null`| ✅ |
 |acl| acl do bucket|"public-read"| ✅ |
-|website_domain_name | nome de domínio sem o "www" -> example.com.br|null| ✅ |
+|website_domain_name | nome de domínio sem o "www" -> example.com.br|`null`| ✅ |
 |retri-type|Tipo de restrição que deseja fazer no CloudFront|"whitelist"| ✅ |
 |locations|locais para aplicar a restri-type|["BR"]| ✅ |
-|acm_certificate_arn_to_use|ARN do certificado na região us-east-1, indicar obrigatoriamente -> acm_certificate_arn_to_use = module.acm.certificate-arn|null| ✅ |
-|tags|tags para os recursos|null|  |
-|allowed_methods|Métodos a serem permitidos no CloudFront|null| ✅ |
-|cached_methods|Métodos de cache a serem permitidos no CloudFront|null| ✅ |
+|acm_certificate_arn_to_use|ARN do certificado na região us-east-1, indicar obrigatoriamente -> acm_certificate_arn_to_use = module.acm.certificate-arn|`null`| ✅ |
+|tags|tags para os recursos|`null`|  |
+|allowed_methods|Métodos a serem permitidos no CloudFront|`null`| ✅ |
+|cached_methods|Métodos de cache a serem permitidos no CloudFront|`null`| ✅ |
 |minimum_protocol_version|A versão mínima do protocolo SSL que você deseja que o CloudFront use para conexões HTTPS|  "TLSv1.2_2021"| ✅ |
 |ssl_support_method|Especifica como você deseja que o CloudFront atenda às solicitações HTTPS|"sni-only"| ✅ |
 
