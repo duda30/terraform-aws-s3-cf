@@ -6,49 +6,51 @@
 
 Exemplo de uso:
 
-      terraform {
-      required_providers {
-         aws = {
-            source  = "hashicorp/aws"
-            version = "4.38.0"
-         }
+```hcl
+terraform {
+   required_providers {
+      aws = {
+         source  = "hashicorp/aws"
+         version = "4.38.0"
       }
-      backend "s3" {
-         bucket = "YOUR-bucket-name"
-         key    = "YOUR-path/terraform.tfstate"
-         region = "YOUR-bucket-region"
-      }
-      }
+   }
+   backend "s3" {
+      bucket = "YOUR-bucket-name"
+      key    = "YOUR-path/terraform.tfstate"
+      region = "YOUR-bucket-region"
+   }
+}
 
-      provider "aws" {
-      region = var.provider_region
-      }
+provider "aws" {
+   region = var.provider_region
+}
 
-      module "s3-cdn" {
-         source = "github.com/duda30/terraform-aws-s3-cf/s3-cdn"
+module "s3-cdn" {
+   source = "github.com/duda30/terraform-aws-s3-cf/s3-cdn"
 
-         bucket-name                = "bucketmaria834823648273"
-         acl                        = "public-read"
-         website_domain_name        = "maria-desafio-2-sust.daredelabs.com.br"
-         locations                  = ["BR"]
-         restri-type                = "whitelist"
-         acm_certificate_arn_to_use = module.acm.certificate-arn
-         tags                       = { "enviroment" = "test" }
-         allowed_methods            = ["HEAD", "GET", "OPTIONS"]
-         cached_methods             = ["GET", "HEAD"]
-         minimum_protocol_version   = "TLSv1.2_2021"
-         ssl_support_method         = "sni-only"
-      }
+   bucket-name                = "bucketmaria834823648273"
+   acl                        = "public-read"
+   website_domain_name        = "maria-desafio-2-sust.daredelabs.com.br"
+   locations                  = ["BR"]
+   restri-type                = "whitelist"
+   acm_certificate_arn_to_use = module.acm.certificate-arn
+   tags                       = { "enviroment" = "test" }
+   allowed_methods            = ["HEAD", "GET", "OPTIONS"]
+   cached_methods             = ["GET", "HEAD"]
+   minimum_protocol_version   = "TLSv1.2_2021"
+   ssl_support_method         = "sni-only"
+}
 
-      module "acm" {
-         source = "github.com/duda30/terraform-aws-s3-cf/acm"
+module "acm" {
+   source = "github.com/duda30/terraform-aws-s3-cf/acm"
 
-         zona-route53-name   = "daredelabs.com.br"
-         website_domain_name = "maria-desafio-2-sust.daredelabs.com.br"
-         tags                = { "enviroment" = "test" }
-         cdn-domain-name     = module.s3-cdn.domain_name_cdn
-         cdn-hosted-zone-id  = module.s3-cdn.hosted_zone_id
-      }
+   zona-route53-name   = "daredelabs.com.br"
+   website_domain_name = "maria-desafio-2-sust.daredelabs.com.br"
+   tags                = { "enviroment" = "test" }
+   cdn-domain-name     = module.s3-cdn.domain_name_cdn
+   cdn-hosted-zone-id  = module.s3-cdn.hosted_zone_id
+}
+```
 
    ---------------------------------------------------------------------------------------
 
