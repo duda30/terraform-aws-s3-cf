@@ -54,10 +54,12 @@ Exemplo de uso:
 
 ROOT:
 
-   Variável: -> provider_region  | default = "us-east-1"
+   Variável: 
+   -> provider_region  | default = "us-east-1"
    
-   Output:   -> website-domain-name-www | URL
-             -> website-domain-name     | URL
+   Output:   
+   -> website-domain-name-www | URL
+   -> website-domain-name     | URL
 
    ---------------------------------------------------------------------------------------
 
