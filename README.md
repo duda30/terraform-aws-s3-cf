@@ -71,9 +71,9 @@ Módulo ACM:
 
       zona-route53-name    | Nome da sua zona hospedada no Route53 AWS     | default = null
 
-      cdn-domain-name      | O nome de domínio correspondente à distribuição, indicar obrigatoriamente -> cdn-domain-name = module.s3-cdn.domain_name_cdn                                      | default = null
+      cdn-domain-name      | O nome de domínio correspondente à distribuição, indicar obrigatoriamente -> cdn-domain-name = module.s3-cdn.domain_name_cdn     | default = null
 
-      cdn-hosted-zone-id   | Alias para o registro no R53, indicar obrigatoriamente -> cdn-hosted-zone-id  = module.s3-cdn.hosted_zone_id                                                       | default = null
+      cdn-hosted-zone-id   | Alias para o registro no R53, indicar obrigatoriamente -> cdn-hosted-zone-id  = module.s3-cdn.hosted_zone_id     | default = null
 
 
    GUIA DOS OUTPUTS:
