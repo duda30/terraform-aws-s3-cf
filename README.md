@@ -6,6 +6,31 @@
 
 Exemplo de uso:
 
+      module "s3-cdn" {
+         source = "./s3-cdn"
+
+         bucket-name                = "bucketmaria834823648273"
+         acl                        = "public-read"
+         website_domain_name        = "maria-desafio-2-sust.daredelabs.com.br"
+         locations                  = ["BR"]
+         restri-type                = "whitelist"
+         acm_certificate_arn_to_use = module.acm.certificate-arn
+         tags                       = { "enviroment" = "test" }
+         allowed_methods            = ["HEAD", "GET", "OPTIONS"]
+         cached_methods             = ["GET", "HEAD"]
+         minimum_protocol_version   = "TLSv1.2_2021"
+         ssl_support_method         = "sni-only"
+      }
+
+      module "acm" {
+         source = "./acm"
+
+         zona-route53-name   = "daredelabs.com.br"
+         website_domain_name = "maria-desafio-2-sust.daredelabs.com.br"
+         tags                = { "enviroment" = "test" }
+         cdn-domain-name     = module.s3-cdn.domain_name_cdn
+         cdn-hosted-zone-id  = module.s3-cdn.hosted_zone_id
+      }
 
 ROOT:
 
@@ -17,58 +42,58 @@ ROOT:
 
 Módulo ACM:
 
-      GUIA DAS VARIÁVEIS:
+   GUIA DAS VARIÁVEIS:
 
-   website_domain_name  | nome de domínio sem o "www" -> example.com.br | default = null
+      website_domain_name  | nome de domínio sem o "www" -> example.com.br | default = null
 
-   tags                 | tags para os recursos                         | default = null
+      tags                 | tags para os recursos                         | default = null
 
-   zona-route53-name    | Nome da sua zona hospedada no Route53 AWS     | default = null
+      zona-route53-name    | Nome da sua zona hospedada no Route53 AWS     | default = null
 
-   cdn-domain-name      | O nome de domínio correspondente à distribuição, indicar obrigatoriamente -> cdn-domain-name = module.s3-cdn.domain_name_cdn                                      | default = null
+      cdn-domain-name      | O nome de domínio correspondente à distribuição, indicar obrigatoriamente -> cdn-domain-name = module.s3-cdn.domain_name_cdn                                      | default = null
 
-   cdn-hosted-zone-id   | Alias para o registro no R53, indicar obrigatoriamente -> cdn-hosted-zone-id  = module.s3-cdn.hosted_zone_id                                                       | default = null
+      cdn-hosted-zone-id   | Alias para o registro no R53, indicar obrigatoriamente -> cdn-hosted-zone-id  = module.s3-cdn.hosted_zone_id                                                       | default = null
 
 
-      GUIA DOS OUTPUTS:
+   GUIA DOS OUTPUTS:
 
-   certificate-arn      | ARN do certificado ACM 
+      certificate-arn      | ARN do certificado ACM 
 
-   www-record           | Registro com "www" do Route53 
+      www-record           | Registro com "www" do Route53 
 
-   record               | Registro com "www" do Route53 
+      record               | Registro com "www" do Route53 
 
 
 
 
 Módulo S3-CDN:
 
-      GUIA DAS VARIÁVEIS:
+   GUIA DAS VARIÁVEIS:
 
-   bucket-name | é o nome do seu bucket | default = null
+      bucket-name | é o nome do seu bucket | default = null
 
-   acl         | acl do bucket          | default = "public-read"
+      acl         | acl do bucket          | default = "public-read"
 
-   website_domain_name | nome de domínio sem o "www" -> example.com.br | default = null
+      website_domain_name | nome de domínio sem o "www" -> example.com.br | default = null
 
-   retri-type  | Tipo de restrição que deseja fazer no CloudFront      | default = "whitelist"
+      retri-type  | Tipo de restrição que deseja fazer no CloudFront      | default = "whitelist"
 
-   locations   | locais para aplicar a restri-type                     | default = ["BR"]
+      locations   | locais para aplicar a restri-type                     | default = ["BR"]
 
-   acm_certificate_arn_to_use | ARN do certificado na região us-east-1, indicar obrigatoriamente -> acm_certificate_arn_to_use = module.acm.certificate-arn             | default = null
+      acm_certificate_arn_to_use | ARN do certificado na região us-east-1, indicar obrigatoriamente -> acm_certificate_arn_to_use = module.acm.certificate-arn             | default = null
 
-   tags        | tags para os recursos                                 | default = null
+      tags        | tags para os recursos                                 | default = null
 
-   allowed_methods     | Métodos a serem permitidos no CloudFront      | default = null
+      allowed_methods     | Métodos a serem permitidos no CloudFront      | default = null
 
-   cached_methods      | Métodos de cache a serem permitidos no CloudFront | default = null
+      cached_methods      | Métodos de cache a serem permitidos no CloudFront | default = null
 
-   minimum_protocol_version | A versão mínima do protocolo SSL que você deseja que o CloudFront use para conexões HTTPS | default = "TLSv1.2_2021"
+      minimum_protocol_version | A versão mínima do protocolo SSL que você deseja que o CloudFront use para conexões HTTPS | default = "TLSv1.2_2021"
 
-   ssl_support_method  | Especifica como você deseja que o CloudFront atenda às solicitações HTTPS | default = "sni-only"
+      ssl_support_method  | Especifica como você deseja que o CloudFront atenda às solicitações HTTPS | default = "sni-only"
 
-      GUIA DOS OUTPUTS:
+   GUIA DOS OUTPUTS:
 
-   domain_name_cdn      | Nome de domínio correspondente à distribuição 
+      domain_name_cdn      | Nome de domínio correspondente à distribuição 
 
-   hosted_zone_id       | Alias para o registro no R53 
+      hosted_zone_id       | Alias para o registro no R53 
