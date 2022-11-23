@@ -54,7 +54,7 @@ Exemplo de uso:
 
 ROOT:
 
-## Variável
+## Inputs
 
 | Name | Description |
 |------|-------------|
@@ -72,26 +72,24 @@ ROOT:
 
 Módulo ACM:
 
-   GUIA DAS VARIÁVEIS:
+## Inputs
 
-      website_domain_name  | nome de domínio sem o "www" -> example.com.br | default = null
-
-      tags                 | tags para os recursos                         | default = null
-
-      zona-route53-name    | Nome da sua zona hospedada no Route53 AWS     | default = null
-
-      cdn-domain-name      | O nome de domínio correspondente à distribuição, indicar obrigatoriamente -> cdn-domain-name = module.s3-cdn.domain_name_cdn     | default = null
-
-      cdn-hosted-zone-id   | Alias para o registro no R53, indicar obrigatoriamente -> cdn-hosted-zone-id  = module.s3-cdn.hosted_zone_id     | default = null
+| Name | Description | Default | Required |
+|------|-------------|:-----:|:-----:|
+|website_domain_name|Nome de domínio sem o "www" -> example.com.br|default = null| ✅ |
+|tags|tags para os recursos|default = null| ✅ |
+|zona-route53-name|Nome da sua zona hospedada no Route53 AWS| default = null| ✅ |
+|cdn-domain-name|O nome de domínio correspondente à distribuição, indicar obrigatoriamente -> cdn-domain-name = module.s3-cdn.domain_name_cdn|default = null| ✅ |
+|cdn-hosted-zone-id|Alias para o registro no R53, indicar obrigatoriamente -> cdn-hosted-zone-id  = module.s3-cdn.hosted_zone_id|default = null| ✅ |
 
 
-   GUIA DOS OUTPUTS:
+## Outputs 
 
-      certificate-arn      | ARN do certificado ACM 
-
-      www-record           | Registro com "www" do Route53
-
-      record               | Registro com "www" do Route53
+| Name | Description |
+|------|-------------|
+|certificate-arn|ARN do certificado ACM|
+|www-record|Registro com "www" do Route53|
+|record|Registro com "www" do Route53|
 
    ---------------------------------------------------------------------------------------
 
