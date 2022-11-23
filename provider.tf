@@ -5,8 +5,13 @@ terraform {
       version = "4.38.0"
     }
   }
+  backend "s3" {
+    bucket = "my-bucket-mary-maria12312"
+    key    = "tfstate-rodobens-teste/terraform.tfstate"
+    region = "us-east-2"
+  }
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = var.provider_region
 }
