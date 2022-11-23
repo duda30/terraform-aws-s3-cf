@@ -62,6 +62,7 @@ ROOT:
    
 
 ## Outputs 
+
 |------|-------------|
 | Name | Description |
 |website-domain-name-www|`URL`|
