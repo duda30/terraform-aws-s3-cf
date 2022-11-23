@@ -80,9 +80,9 @@ Módulo ACM:
 
       certificate-arn      | ARN do certificado ACM 
 
-      www-record           | Registro com "www" do Route53 
+      www-record           | Registro com "www" do Route53
 
-      record               | Registro com "www" do Route53 
+      record               | Registro com "www" do Route53
 
    ---------------------------------------------------------------------------------------
 
@@ -100,7 +100,7 @@ Módulo S3-CDN:
 
       locations   | locais para aplicar a restri-type                     | default = ["BR"]
 
-      acm_certificate_arn_to_use | ARN do certificado na região us-east-1, indicar obrigatoriamente -> acm_certificate_arn_to_use = module.acm.certificate-arn             | default = null
+      acm_certificate_arn_to_use | ARN do certificado na região us-east-1, indicar obrigatoriamente -> acm_certificate_arn_to_use = module.acm.certificate-arn      | default = null
 
       tags        | tags para os recursos                                 | default = null
 
