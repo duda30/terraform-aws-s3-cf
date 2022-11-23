@@ -58,8 +58,8 @@ ROOT:
 
    provider_region  | default = "us-east-1"
    
-   
-   Output:   
+
+   Outputs:   
 
    website-domain-name-www | URL
 
