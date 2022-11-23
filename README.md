@@ -25,7 +25,7 @@ Exemplo de uso:
       }
 
       module "s3-cdn" {
-         source = "./s3-cdn"
+         source = "github.com/duda30/terraform-aws-s3-cf/tree/main/s3-cdn"
 
          bucket-name                = "bucketmaria834823648273"
          acl                        = "public-read"
@@ -41,7 +41,7 @@ Exemplo de uso:
       }
 
       module "acm" {
-         source = "./acm"
+         source = "github.com/duda30/terraform-aws-s3-cf/tree/main/acm"
 
          zona-route53-name   = "daredelabs.com.br"
          website_domain_name = "maria-desafio-2-sust.daredelabs.com.br"
